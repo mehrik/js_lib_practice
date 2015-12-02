@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Assignment IV: Dojo Query</title>
+</head>
+<body>
+    <h1 id='firstHeader'>Hello</h1>
+    <script type="text/javascript">
+
+        var $Dojo = (function(id_name) {
+            var id = document.getElementById(id_name);
+
+            click =  function(callback) {
+                id.addEventListener("click", callback);
+            }
+
+            hover = function(callback1, callback2) {
+                if(!callback2) {
+                    callback2 = callback1;
+                }
+                id.addEventListener("mouseover", callback1);
+                id.addEventListener("mouseleave", callback2);
+            }
+
+            return this;
+        });
+
+        $Dojo('firstHeader').click(function() {
+            alert('I think it worked');
+        });
+
+        $Dojo('firstHeader').hover(function() {
+            console.log('I am mousing over using the hover function');
+        }, function() {
+            console.log('I am mousing off using the hover function');
+        });
+    </script>
+</body>
+</html>
